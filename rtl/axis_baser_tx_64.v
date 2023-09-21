@@ -660,6 +660,7 @@ end
 always @(posedge clk) begin
     state_reg <= state_next;
 
+    frame_min_count_reg <= frame_min_count_next;
     swap_lanes_reg <= swap_lanes_next;
 
     ifg_count_reg <= ifg_count_next;
@@ -776,7 +777,7 @@ always @(posedge clk) begin
         state_reg <= STATE_IDLE;
 
         swap_lanes_reg <= 1'b0;
-
+        frame_min_count_reg <= {MIN_LEN_WIDTH{1'b0}};
         ifg_count_reg <= 8'd0;
         deficit_idle_count_reg <= 2'd0;
 
